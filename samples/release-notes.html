@@ -4,126 +4,189 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Enterprise Platform Release Notes | AKTechDocs</title>
+  <meta name="description" content="Production release notes, changelog, and migration guidance sample by AKTechDocs." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f172a;
-      --sidebar-bg: #1e293b;
-      --card-bg: #1e293b;
-      --border: #334155;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
+      --bg: #0b0f19;
+      --sidebar-bg: #111827;
+      --card-bg: #1f2937;
+      --border: #374151;
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
       --accent: #38bdf8;
       --tag-feature: #10b981;
       --tag-fix: #3b82f6;
       --tag-breaking: #ef4444;
       --tag-deprecate: #f59e0b;
-      --code-bg: #090d16;
+      --code-bg: #030712;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
       color: var(--text);
       display: flex;
       min-height: 100vh;
       line-height: 1.6;
     }
+
+    /* Sidebar Navigation */
     aside {
       width: 280px;
+      min-width: 280px;
       background: var(--sidebar-bg);
       border-right: 1px solid var(--border);
-      padding: 1.5rem;
+      padding: 2rem 1.5rem;
       position: sticky;
       top: 0;
       height: 100vh;
       overflow-y: auto;
     }
+
+    aside .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: opacity 0.2s;
+    }
+    aside .back-link:hover { opacity: 0.8; }
+
     aside .brand {
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       display: block;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       color: var(--text);
       text-decoration: none;
     }
     aside .brand span { color: var(--accent); }
+
     aside nav h4 {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       color: var(--text-muted);
-      margin: 1.25rem 0 0.5rem;
+      margin: 1.5rem 0 0.5rem;
     }
+
     aside nav a {
       display: block;
       font-size: 0.9rem;
       color: var(--text-muted);
       text-decoration: none;
-      padding: 0.35rem 0;
-      transition: color 0.2s;
+      padding: 0.4rem 0;
+      transition: color 0.2s ease;
     }
-    aside nav a:hover { color: var(--accent); }
-    aside .back-link {
-      display: inline-block;
-      margin-bottom: 1.5rem;
-      font-size: 0.85rem;
-      color: var(--accent);
-      text-decoration: none;
-    }
+    aside nav a:hover { color: #fff; }
+
+    /* Main Content */
     main {
       flex: 1;
       max-width: 900px;
-      padding: 3rem 2.5rem;
+      padding: 3.5rem 3rem;
       overflow-y: auto;
     }
-    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
-    .lead { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+
+    header.doc-header {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    /* Release Section Blocks */
     .release-block {
       border-bottom: 1px solid var(--border);
       padding-bottom: 3rem;
       margin-bottom: 3rem;
+      scroll-margin-top: 2rem;
     }
+
     .release-header {
       display: flex;
+      justify-content: space-between;
       align-items: baseline;
-      gap: 1rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
       margin-bottom: 1.25rem;
     }
-    .version-title { font-size: 1.6rem; font-weight: 700; }
-    .release-date { font-size: 0.9rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+    .version-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .release-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--card-bg);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
     .release-meta {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      padding: 0.85rem 1.25rem;
       margin-bottom: 2rem;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
     }
     .release-meta strong { color: var(--text); }
+
     h3 {
       font-size: 1.15rem;
       margin: 1.75rem 0 0.75rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
+
+    /* Badges */
     .tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      padding: 0.15rem 0.5rem;
+      padding: 0.2rem 0.55rem;
       border-radius: 4px;
       color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
-    .tag-feature { background: var(--tag-feature); }
     .tag-breaking { background: var(--tag-breaking); }
+    .tag-feature { background: var(--tag-feature); }
     .tag-fix { background: var(--tag-fix); }
     .tag-deprecate { background: var(--tag-deprecate); }
 
+    /* Lists */
     ul.item-list {
       list-style: none;
       padding-left: 0;
@@ -141,138 +204,47 @@
       color: var(--accent);
       position: absolute;
       left: 0;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       line-height: 1;
     }
     ul.item-list li strong { color: var(--text); }
+
+    /* Callouts */
+    .callout {
+      border-left: 4px solid var(--tag-breaking);
+      background: rgba(239, 68, 68, 0.08);
+      border-radius: 0 6px 6px 0;
+      padding: 0.9rem 1.2rem;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.9rem;
+      color: #fca5a5;
+    }
+    .callout strong { color: #fecaca; }
+
+    /* Code Blocks */
     pre {
       background: var(--code-bg);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 0.85rem 1rem;
+      padding: 0.75rem 1rem;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.85rem;
       color: #e2e8f0;
-      margin: 0.5rem 0 1rem;
+      margin: 0.6rem 0 0.85rem;
       overflow-x: auto;
     }
-    code { font-family: 'JetBrains Mono', monospace; color: var(--accent); }
-    .callout {
-      border-left: 4px solid var(--tag-breaking);
-      background: rgba(239, 68, 68, 0.1);
-      padding: 1rem;
-      border-radius: 0 6px 6px 0;
-      margin: 1rem 0;
-      font-size: 0.9rem;
-      color: #fca5a5;
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.88em;
     }
-  </style>
-</head>
-<body>
 
-  <aside>
-    <a href="../index.html" class="back-link">&larr; Back to Portfolio</a>
-    <a href="#" class="brand">NovaCore <span>Platform</span></a>
-    <nav>
-      <h4>Versions</h4>
-      <a href="#v4-2-0">Version 4.2.0 (Latest)</a>
-      <a href="#v4-1-0">Version 4.1.0</a>
-      <h4>Reference</h4>
-      <a href="#compatibility">Compatibility Matrix</a>
-    </nav>
-  </aside>
-
-  <main>
-    <h1>Enterprise Platform Release Notes</h1>
-    <p class="lead">
-      System changelog, upgrade steps, migration notices, and bug fixes for the NovaCore Multi-Tenant Cloud Platform.
-    </p>
-
-    <!-- Version 4.2.0 -->
-    <div class="release-block" id="v4-2-0">
-      <div class="release-header">
-        <span class="version-title">Release 4.2.0</span>
-        <span class="release-date">November 2026</span>
-      </div>
-
-      <div class="release-meta">
-        <strong>Deployment Scope:</strong> Multi-Tenant SaaS & Standalone Private Clusters &bull;
-        <strong>Build Target:</strong> <code>build-prod-202611-0420</code> &bull;
-        <strong>Downtime Required:</strong> None (Zero-downtime rolling update)
-      </div>
-
-      <!-- Breaking Changes -->
-      <h3><span class="tag tag-breaking">Breaking Changes</span> API Token Expiration Requirements</h3>
-      <div class="callout">
-        <strong>Action Required:</strong> Permanent personal access tokens (PATs) are no longer accepted. All existing service tokens must be migrated to rotating OAuth2 service principals.
-      </div>
-      <ul class="item-list">
-        <li><strong>Mandatory Token TTL:</strong> API gateways now reject tokens without an explicit TTL header. All programmatic calls must rotate tokens using the <code>/oauth/v2/token</code> refresh workflow.</li>
-      </ul>
-
-      <!-- New Features -->
-      <h3><span class="tag tag-feature">New Features</span> Role-Based Governance & Audit Logging</h3>
-      <ul class="item-list">
-        <li>
-          <strong>Fine-Grained Role Access Control (RBAC):</strong> Added granular scopes for read-only audit exports:
-          <pre>scopes: ["audit:events:read", "audit:retention:read"]</pre>
-        </li>
-        <li>
-          <strong>Automated S3 Compliance Archive:</strong> Introduced an automated archival pipeline supporting direct streaming of raw W3C-standard JSON logs to customer-managed AWS S3 or Azure Blob storage buckets.
-        </li>
-      </ul>
-
-      <!-- Enhancements -->
-      <h3><span class="tag tag-feature">Enhancements</span> Database Query Performance</h3>
-      <ul class="item-list">
-        <li><strong>Partition Indexing:</strong> Reduced query latency on tenant event tables exceeding 50 million records from 420ms to 48ms through partition pruning.</li>
-        <li><strong>Memory Footprint:</strong> Reduced Redis cache serialization overhead by 22% during peak concurrent ingestion bursts.</li>
-      </ul>
-
-      <!-- Bug Fixes -->
-      <h3><span class="tag tag-fix">Resolved Issues</span> Critical Bug Fixes</h3>
-      <ul class="item-list">
-        <li><strong>NC-4412:</strong> Fixed an edge case where webhook events dropped delivery retry attempts when receiving an HTTP <code>429 Too Many Requests</code> response from destination endpoints.</li>
-        <li><strong>NC-4428:</strong> Resolved a race condition during concurrent workspace deletion that caused orphaned storage reference records in Postgres.</li>
-        <li><strong>NC-4450:</strong> Addressed a UI synchronization glitch where active session counts failed to invalidate immediately after SAML single-logout execution.</li>
-      </ul>
-    </div>
-
-    <!-- Version 4.1.0 -->
-    <div class="release-block" id="v4-1-0">
-      <div class="release-header">
-        <span class="version-title">Release 4.1.0</span>
-        <span class="release-date">September 2026</span>
-      </div>
-
-      <div class="release-meta">
-        <strong>Deployment Scope:</strong> Multi-Tenant SaaS &bull;
-        <strong>Build Target:</strong> <code>build-prod-202609-0410</code>
-      </div>
-
-      <h3><span class="tag tag-feature">New Features</span></h3>
-      <ul class="item-list">
-        <li><strong>Multi-Region Ingestion Routers:</strong> Added automatic routing to EU (Frankfurt) and APAC (Singapore) gateway regions to comply with data residency mandates.</li>
-        <li><strong>Dynamic Rate Limiting:</strong> Configurable per-tenant rate limit adjustments via admin management API without server restart.</li>
-      </ul>
-
-      <h3><span class="tag tag-deprecate">Deprecation Notice</span></h3>
-      <ul class="item-list">
-        <li><strong>Legacy V1 Auth Endpoint:</strong> The <code>/api/v1/auth/login</code> route is deprecated and marked for removal in release 5.0.0. Use <code>/oauth/v2/token</code>.</li>
-      </ul>
-    </div>
-
-    <!-- Compatibility Matrix -->
-    <div id="compatibility">
-      <h2>Platform Compatibility Matrix</h2>
-      <ul class="item-list">
-        <li><strong>Docker Engine:</strong> Version 24.0.0 or higher</li>
-        <li><strong>Kubernetes:</strong> v1.28 through v1.31</li>
-        <li><strong>PostgreSQL:</strong> v15.x, v16.x</li>
-        <li><strong>Browser Support:</strong> Chromium &ge; 120, Firefox &ge; 120, Safari &ge; 17</li>
-      </ul>
-    </div>
-  </main>
-
-</body>
-</html>
+    /* Compatibility Matrix Section */
+    #compatibility {
+      scroll-margin-top: 2rem;
+      margin-top: 2rem;
+    }
+    #compatibility h2 {
