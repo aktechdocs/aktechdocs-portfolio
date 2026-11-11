@@ -1,1 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AKTechDocs | Enterprise Technical Writing & API Documentation</title>
+  <meta name="description" content="Senior Technical Writer specializing in REST APIs, enterprise software manuals, DITA XML, and developer documentation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      border-bottom: 1px solid var(--surface-border);
+      background: rgba(15, 23, 42, 0.9);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+    .brand { font-size: 1.25rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .brand span { color: var(--accent); }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; }
+    
+    /* Hero */
+    .hero { padding: 4rem 1.5rem 3rem; text-align: left; }
+    .hero h1 { font-size: 2.75rem; line-height: 1.2; margin-bottom: 1rem; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 720px; margin-bottom: 1.75rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      margin-left: 0.75rem;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* Cards & Sections */
+    section { padding: 3rem 0; border-top: 1px solid var(--surface-border); }
+    h2 { font-size: 1.85rem; margin-bottom: 1.5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff; }
+    .card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      background: #0f172a;
+      border: 1px solid var(--surface-border);
+      color: var(--accent);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    .card-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    /* Skills Table */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .skill-category {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      padding: 1.25rem;
+      border-radius: 6px;
+    }
+    .skill-category h4 { color: var(--accent); margin-bottom: 0.75rem; font-size: 1rem; }
+    .skill-category ul { list-style: none; font-size: 0.9rem; color: var(--text-muted); }
+    .skill-category li { margin-bottom: 0.4rem; }
+
+    /* Contact */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .contact-card h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .contact-card p { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    footer {
+      border-top: 1px solid var(--surface-border);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#" class="brand">AK<span>TechDocs</span></a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#samples">Samples</a>
+        <a href="#skills">Tooling</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <h1>Developer Documentation & Enterprise Technical Writing</h1>
+      <p>
+        Translating complex software architectures, REST APIs, and enterprise systems into clean, developer-friendly documentation and audit-ready manuals. Backed by 14+ years of cross-functional SDLC experience.
+      </p>
+      <a href="#samples" class="btn">Explore Work Samples</a>
+      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+    </div>
+
+    <!-- Services -->
+    <section id="services">
+      <h2>Specialized Deliverables</h2>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <h3>REST API Documentation</h3>
+            <p>Interactive endpoint documentation, authentication specifications (OAuth2, API keys), JSON payloads, and Postman collections built to accelerate developer onboarding.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">OpenAPI / Swagger</span>
+            <span class="tag">Postman</span>
+            <span class="tag">cURL</span>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Enterprise User & Admin Guides</h3>
+            <p>Task-based manuals, installation guides, and system configuration runbooks structured using topic-based authoring and the Microsoft / Google developer style guides.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">DITA XML</span>
+            <span class="tag">MadCap Flare</span>
+            <span class="tag">Oxygen XML</span>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Docs-as-Code & Release Notes</h3>
+            <p>Git-integrated documentation workflows, automated CI/CD linting, and semantic release notes synchronized directly with sprint branches and Jira tickets.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Git / GitHub Actions</span>
+            <span class="tag">Markdown</span>
+            <span class="tag">Jira</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Samples -->
+    <section id="samples">
+      <h2>Featured Work Samples</h2>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <h3>Sample 1: TaskFlow User Guide</h3>
+            <p>End-to-end task-based enterprise user manual featuring installation procedures, permissions configuration, and troubleshooting matrices.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">User Manual</span>
+            <span class="tag">Topic-Based</span>
+          </div>
+          <a href="./samples/taskflow-guide.html" class="card-link">View Documentation Sample &rarr;</a>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Sample 2: CustomerHub REST API Reference</h3>
+            <p>Developer reference documentation covering authentication workflows, pagination parameters, response codes, and copy-ready JSON payloads.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">REST API</span>
+            <span class="tag">JSON</span>
+            <span class="tag">OpenAPI</span>
+          </div>
+          <a href="./samples/api-reference.html" class="card-link">View Documentation Sample &rarr;</a>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Sample 3: Enterprise Platform Release Notes</h3>
+            <p>Structured version release documentation breaking down critical features, breaking changes, deprecation notices, and resolved defects.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Release Notes</span>
+            <span class="tag">SDLC</span>
+          </div>
+          <a href="./samples/release-notes.html" class="card-link">View Documentation Sample &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tooling & Skills -->
+    <section id="skills">
+      <h2>Tooling & Technical Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h4>Structured Authoring</h4>
+          <ul>
+            <li>MadCap Flare</li>
+            <li>Oxygen XML & DITA</li>
+            <li>PTC Arbortext Editor</li>
+            <li>Adobe RoboHelp</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4>Developer Ecosystem</h4>
+          <ul>
+            <li>OpenAPI 3.0 / Swagger</li>
+            <li>Postman (Collections & Testing)</li>
+            <li>Git, SVN, GitHub Actions</li>
+            <li>Markdown, HTML5, CSS3</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4>Process & Standards</h4>
+          <ul>
+            <li>Docs-as-Code Methodologies</li>
+            <li>Google & MS Writing Style Guides</li>
+            <li>Agile Scrum / Sprint Integration</li>
+            <li>LLM-Optimized Content Retrieval</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="contact-card">
+        <h3>Need Technical Documentation for Your Product?</h3>
+        <p>Available for fixed-scope documentation overhauls, monthly maintenance retainers, and API documentation contracts.</p>
+        <a href="mailto:aktechdocs@gmail.com" class="btn">Contact via Email: aktechdocs@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 AKTechDocs. Engineered by Amresh Kumar &bull; Pune, India (Remote Deliverables Worldwide)</p>
+  </footer>
+
+</body>
+</html>
