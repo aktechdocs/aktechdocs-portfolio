@@ -18,6 +18,7 @@
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --accent: #38bdf8;
+      --success: #10b981;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -67,7 +68,10 @@
       font-weight: 600;
       border-radius: 6px;
       text-decoration: none;
-      transition: background 0.2s;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
     }
     .btn:hover { background: var(--primary-dark); }
     .btn-secondary {
@@ -78,7 +82,7 @@
     }
     .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* Cards & Sections */
+    /* Sections & Cards */
     section { padding: 3rem 0; border-top: 1px solid var(--surface-border); }
     h2 { font-size: 1.85rem; margin-bottom: 1.5rem; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
@@ -127,175 +131,89 @@
     .skill-category ul { list-style: none; font-size: 0.9rem; color: var(--text-muted); }
     .skill-category li { margin-bottom: 0.4rem; }
 
-    /* Contact */
+    /* Contact Section */
     .contact-card {
       background: var(--surface);
       border: 1px solid var(--surface-border);
-      border-radius: 8px;
-      padding: 2.5rem;
+      border-radius: 10px;
+      padding: 3rem 2rem;
       text-align: center;
+      max-width: 820px;
+      margin: 0 auto;
     }
-    .contact-card h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
-    .contact-card p { color: var(--text-muted); margin-bottom: 1.5rem; }
+    .contact-card h3 { font-size: 1.75rem; margin-bottom: 0.75rem; color: #fff; }
+    .contact-card p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem; }
+
+    /* Clipboard Email Action */
+    .email-container {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #0f172a;
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 0.4rem 0.5rem 0.4rem 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .email-text {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text);
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+    .copy-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.55rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: var(--primary-dark); }
+    .copy-btn.copied {
+      background: var(--success);
+    }
+
+    /* Contact Grid Details */
+    .contact-channels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--surface-border);
+    }
+    .channel-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .channel-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+    .channel-link {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .channel-link:hover { text-decoration: underline; }
 
     footer {
       border-top: 1px solid var(--surface-border);
       text-align: center;
-      padding: 2rem 1.5rem;
+      padding: 2.5rem 1.5rem;
       color: var(--text-muted);
       font-size: 0.85rem;
     }
-  </style>
-</head>
-<body>
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
-  <header>
-    <nav>
-      <a href="#" class="brand">AK<span>TechDocs</span></a>
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#samples">Samples</a>
-        <a href="#skills">Tooling</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </header>
-
-  <main class="container">
-    <div class="hero">
-      <h1>Developer Documentation & Enterprise Technical Writing</h1>
-      <p>
-        Translating complex software architectures, REST APIs, and enterprise systems into clean, developer-friendly documentation and audit-ready manuals. Backed by 14+ years of cross-functional SDLC experience.
-      </p>
-      <a href="#samples" class="btn">Explore Work Samples</a>
-      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-    </div>
-
-    <!-- Services -->
-    <section id="services">
-      <h2>Specialized Deliverables</h2>
-      <div class="grid">
-        <div class="card">
-          <div>
-            <h3>REST API Documentation</h3>
-            <p>Interactive endpoint documentation, authentication specifications (OAuth2, API keys), JSON payloads, and Postman collections built to accelerate developer onboarding.</p>
-          </div>
-          <div class="tags">
-            <span class="tag">OpenAPI / Swagger</span>
-            <span class="tag">Postman</span>
-            <span class="tag">cURL</span>
-          </div>
-        </div>
-        <div class="card">
-          <div>
-            <h3>Enterprise User & Admin Guides</h3>
-            <p>Task-based manuals, installation guides, and system configuration runbooks structured using topic-based authoring and the Microsoft / Google developer style guides.</p>
-          </div>
-          <div class="tags">
-            <span class="tag">DITA XML</span>
-            <span class="tag">MadCap Flare</span>
-            <span class="tag">Oxygen XML</span>
-          </div>
-        </div>
-        <div class="card">
-          <div>
-            <h3>Docs-as-Code & Release Notes</h3>
-            <p>Git-integrated documentation workflows, automated CI/CD linting, and semantic release notes synchronized directly with sprint branches and Jira tickets.</p>
-          </div>
-          <div class="tags">
-            <span class="tag">Git / GitHub Actions</span>
-            <span class="tag">Markdown</span>
-            <span class="tag">Jira</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Work Samples -->
-    <section id="samples">
-      <h2>Featured Work Samples</h2>
-      <div class="grid">
-        <!-- Sample 1: TaskFlow Guide with Google Drive Link -->
-        <div class="card">
-          <div>
-            <h3>Sample 1: TaskFlow User Guide</h3>
-            <p>End-to-end task-based enterprise user manual featuring installation procedures, permissions configuration, and troubleshooting matrices.</p>
-          </div>
-          <div class="tags">
-            <span class="tag">User Manual</span>
-            <span class="tag">Topic-Based</span>
-            <span class="tag">PDF</span>
-          </div>
-          <a href="https://drive.google.com/file/d/1Gm6hapY4f71FkAKSjAS7Y881CORbhNF6/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="card-link">View Documentation Sample (PDF) &rarr;</a>
-        </div>
-
-        <!-- Sample 2: CustomerHub REST API -->
-        <div class="card">
-          <div>
-            <h3>Sample 2: CustomerHub REST API Reference</h3>
-            <p>Developer reference documentation covering authentication workflows, pagination parameters, response codes, and copy-ready JSON payloads.</p>
-          </div>
-          <div class="tags">
-            <span class="tag">REST API</span>
-            <span class="tag">JSON</span>
-            <span class="tag">OpenAPI</span>
-          </div>
-          <a href="./samples/api-reference.html" class="card-link">View Documentation Sample &rarr;</a>
-        </div>
-
-        <!-- Sample 3: Enterprise Release Notes -->
-        <div class="card">
-          <div>
-            <h3>Sample 3: Enterprise Platform Release Notes</h3>
-            <p>Structured version release documentation breaking down critical features, breaking changes, deprecation notices, and resolved defects.</p>
-          </div>
-          <div class="tags">
-            <span class="tag">Release Notes</span>
-            <span class="tag">SDLC</span>
-            <span class="tag">Changelog</span>
-          </div>
-          <a href="./samples/release-notes.html" class="card-link">View Documentation Sample &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tooling & Skills -->
-    <section id="skills">
-      <h2>Tooling & Technical Stack</h2>
-      <div class="skills-grid">
-        <div class="skill-category">
-          <h4>Structured Authoring</h4>
-          <ul>
-            <li>MadCap Flare</li>
-            <li>Oxygen XML & DITA</li>
-            <li>PTC Arbortext Editor</li>
-            <li>Adobe RoboHelp</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h4>Developer Ecosystem</h4>
-          <ul>
-            <li>OpenAPI 3.0 / Swagger</li>
-            <li>Postman (Collections & Testing)</li>
-            <li>Git, SVN, GitHub Actions</li>
-            <li>Markdown, HTML5, CSS3</li>
-          </ul>
-        </div>
-        <div class="skill-category">
-          <h4>Process & Standards</h4>
-          <ul>
-            <li>Docs-as-Code Methodologies</li>
-            <li>Google & MS Writing Style Guides</li>
-            <li>Agile Scrum / Sprint Integration</li>
-            <li>LLM-Optimized Content Retrieval</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="contact-card">
-        <h3>Need Technical Documentation for Your Product?</h3>
-        <p>Available for fixed-scope documentation overhauls, monthly maintenance retainers, and API documentation contracts.</p>
-        <a href="mailto:aktechdocs@gmail.com" class="btn">Contact via Email: aktechdocs
+    @media (max-
