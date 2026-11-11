@@ -216,4 +216,231 @@
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    @media (max-
+    @media (max-width: 640px) {
+      .email-container {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.75rem;
+        width: 100%;
+      }
+      .copy-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#" class="brand">AK<span>TechDocs</span></a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#samples">Samples</a>
+        <a href="#skills">Tooling</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="hero">
+      <h1>Developer Documentation & Enterprise Technical Writing</h1>
+      <p>
+        Translating complex software architectures, REST APIs, and enterprise systems into clean, developer-friendly documentation and audit-ready manuals. Backed by 14+ years of cross-functional SDLC experience.
+      </p>
+      <a href="#samples" class="btn">Explore Work Samples</a>
+      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+    </div>
+
+    <!-- Services -->
+    <section id="services">
+      <h2>Specialized Deliverables</h2>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <h3>REST API Documentation</h3>
+            <p>Interactive endpoint documentation, authentication specifications (OAuth2, API keys), JSON payloads, and Postman collections built to accelerate developer onboarding.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">OpenAPI / Swagger</span>
+            <span class="tag">Postman</span>
+            <span class="tag">cURL</span>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Enterprise User & Admin Guides</h3>
+            <p>Task-based manuals, installation guides, and system configuration runbooks structured using topic-based authoring and the Microsoft / Google developer style guides.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">DITA XML</span>
+            <span class="tag">MadCap Flare</span>
+            <span class="tag">Oxygen XML</span>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Docs-as-Code & Release Notes</h3>
+            <p>Git-integrated documentation workflows, automated CI/CD linting, and semantic release notes synchronized directly with sprint branches and Jira tickets.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Git / GitHub Actions</span>
+            <span class="tag">Markdown</span>
+            <span class="tag">Jira</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Samples -->
+    <section id="samples">
+      <h2>Featured Work Samples</h2>
+      <div class="grid">
+        <!-- Sample 1: TaskFlow Guide with Google Drive Link -->
+        <div class="card">
+          <div>
+            <h3>Sample 1: TaskFlow User Guide</h3>
+            <p>End-to-end task-based enterprise user manual featuring installation procedures, permissions configuration, and troubleshooting matrices.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">User Manual</span>
+            <span class="tag">Topic-Based</span>
+            <span class="tag">PDF</span>
+          </div>
+          <a href="https://drive.google.com/file/d/1Gm6hapY4f71FkAKSjAS7Y881CORbhNF6/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="card-link">View Documentation Sample (PDF) &rarr;</a>
+        </div>
+
+        <!-- Sample 2: CustomerHub REST API -->
+        <div class="card">
+          <div>
+            <h3>Sample 2: CustomerHub REST API Reference</h3>
+            <p>Developer reference documentation covering authentication workflows, pagination parameters, response codes, and copy-ready JSON payloads.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">REST API</span>
+            <span class="tag">JSON</span>
+            <span class="tag">OpenAPI</span>
+          </div>
+          <a href="./samples/api-reference.html" class="card-link">View Documentation Sample &rarr;</a>
+        </div>
+
+        <!-- Sample 3: Enterprise Release Notes -->
+        <div class="card">
+          <div>
+            <h3>Sample 3: Enterprise Platform Release Notes</h3>
+            <p>Structured version release documentation breaking down critical features, breaking changes, deprecation notices, and resolved defects.</p>
+          </div>
+          <div class="tags">
+            <span class="tag">Release Notes</span>
+            <span class="tag">SDLC</span>
+            <span class="tag">Changelog</span>
+          </div>
+          <a href="./samples/release-notes.html" class="card-link">View Documentation Sample &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tooling & Skills -->
+    <section id="skills">
+      <h2>Tooling & Technical Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h4>Structured Authoring</h4>
+          <ul>
+            <li>MadCap Flare</li>
+            <li>Oxygen XML & DITA</li>
+            <li>PTC Arbortext Editor</li>
+            <li>Adobe RoboHelp</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4>Developer Ecosystem</h4>
+          <ul>
+            <li>OpenAPI 3.0 / Swagger</li>
+            <li>Postman (Collections & Testing)</li>
+            <li>Git, SVN, GitHub Actions</li>
+            <li>Markdown, HTML5, CSS3</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4>Process & Standards</h4>
+          <ul>
+            <li>Docs-as-Code Methodologies</li>
+            <li>Google & MS Writing Style Guides</li>
+            <li>Agile Scrum / Sprint Integration</li>
+            <li>LLM-Optimized Content Retrieval</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="contact-card">
+        <h3>Initiate a Documentation Project</h3>
+        <p>Available for technical writing contracts, developer API specifications, and enterprise documentation lifecycle consulting.</p>
+        
+        <!-- One-Click Copy Clipboard Element -->
+        <div class="email-container">
+          <span class="email-text" id="email-address">aktechdocs@gmail.com</span>
+          <button class="copy-btn" id="copy-btn" onclick="copyEmail()">Copy Email</button>
+        </div>
+
+        <div class="contact-channels">
+          <div class="channel-item">
+            <span class="channel-title">Direct Mail</span>
+            <a href="mailto:aktechdocs@gmail.com" class="channel-link">Open in Mail Client &rarr;</a>
+          </div>
+          <div class="channel-item">
+            <span class="channel-title">Direct Phone</span>
+            <a href="tel:+918105988899" class="channel-link">+91 8105988899</a>
+          </div>
+          <div class="channel-item">
+            <span class="channel-title">LinkedIn Company</span>
+            <a href="https://www.linkedin.com/company/aktechdocs" target="_blank" rel="noopener noreferrer" class="channel-link">AKTechDocs on LinkedIn &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 AKTechDocs. Engineered by Amresh Kumar &bull; Pune, India (Remote Worldwide)</p>
+    <p style="margin-top: 0.5rem;">
+      <a href="mailto:aktechdocs@gmail.com">aktechdocs@gmail.com</a> &bull; 
+      <a href="tel:+918105988899">+91 8105988899</a> &bull; 
+      <a href="https://www.linkedin.com/company/aktechdocs" target="_blank" rel="noopener noreferrer">LinkedIn Company</a>
+    </p>
+  </footer>
+
+  <script>
+    function copyEmail() {
+      const email = document.getElementById('email-address').innerText;
+      const btn = document.getElementById('copy-btn');
+      
+      navigator.clipboard.writeText(email).then(() => {
+        btn.innerText = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerText = 'Copy Email';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = email;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        
+        btn.innerText = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerText = 'Copy Email';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
