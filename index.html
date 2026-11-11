@@ -56,7 +56,7 @@
     .container { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; }
     
     /* Hero */
-    .hero { padding: 3.5rem 1.5rem 2.5rem; text-align: left; }
+    .hero { padding: 3.5rem 1.5rem 2rem; text-align: left; }
     .availability-badge {
       display: inline-flex;
       align-items: center;
@@ -112,7 +112,7 @@
       border: 1px solid var(--surface-border);
       border-radius: 8px;
       padding: 1.25rem;
-      margin: 2rem 0 3rem;
+      margin: 2rem 0;
     }
     .engagement-item {
       display: flex;
@@ -126,6 +126,44 @@
     .engagement-item span {
       color: var(--text-muted);
       font-size: 0.85rem;
+    }
+
+    /* Key Experience & Achievements */
+    .highlights-section {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .highlights-section h3 {
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .highlight-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .highlight-list li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.9rem;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+    .highlight-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .highlight-list li strong {
+      color: #fff;
     }
 
     /* Sections & Cards */
@@ -277,7 +315,8 @@
     <nav>
       <a href="#" class="brand">AK<span>TechDocs</span></a>
       <div class="nav-links">
-        <a href="#services">Freelance Services</a>
+        <a href="#highlights">Key Strengths</a>
+        <a href="#services">Services</a>
         <a href="#samples">Work Samples</a>
         <a href="#skills">Tooling</a>
         <a href="#contact">Hire Me</a>
@@ -292,26 +331,48 @@
       </div>
       <h1>Senior Freelance Technical Writer &amp; <span>API Specialist</span></h1>
       <p>
-        Providing contract-based technical writing, REST API references, and enterprise documentation architecture for SaaS platforms, engineering teams, and startups worldwide. Backed by 14+ years of cross-functional SDLC expertise[cite: 1].
+        Translating complex software architectures, REST APIs, and enterprise systems into clean, developer-friendly documentation and audit-ready manuals. Providing independent contract and project-based technical documentation services for global clients.
       </p>
       <a href="#samples" class="btn">View Work Samples</a>
       <a href="#contact" class="btn btn-secondary">Hire for a Project</a>
 
-      <!-- Freelance Engagement Options -->
+      <!-- Freelance Engagement Models -->
       <div class="engagement-bar">
         <div class="engagement-item">
           <strong>Fixed-Scope Projects</strong>
-          <span>API references, manual rewrites, and release setups.</span>
+          <span>API references, user manual rewrites, and release setups.</span>
         </div>
         <div class="engagement-item">
           <strong>Hourly Contracts</strong>
-          <span>Sprint-based technical writing via Upwork or Contra.</span>
+          <span>Sprint-based technical writing via Upwork, Contra, or direct contract.</span>
         </div>
         <div class="engagement-item">
           <strong>Monthly Retainers</strong>
           <span>Ongoing release notes, doc maintenance, and PR reviews.</span>
         </div>
       </div>
+    </div>
+
+    <!-- Key Experience & Achievements Section -->
+    <div class="highlights-section" id="highlights">
+      <h3>Key Experience &amp; Deliverable Impact</h3>
+      <ul class="highlight-list">
+        <li>
+          <strong>14+ Years of Enterprise SDLC Expertise[cite: 1]:</strong> Proven record of designing and delivering complete documentation suites from scratch for complex SaaS[cite: 1], government platforms[cite: 2], and mission-critical engineering systems[cite: 1, 3].
+        </li>
+        <li>
+          <strong>End-to-End REST API Reference Creation[cite: 1, 2]:</strong> Proficient in producing clean endpoint references, authentication workflows, parameter tables, and copy-ready JSON payloads validated directly through Postman[cite: 1, 2].
+        </li>
+        <li>
+          <strong>Docs-as-Code &amp; Git Workflow Integration[cite: 1]:</strong> Seamlessly embedding documentation within developer repositories (Git/GitHub)[cite: 1], aligning docs with CI/CD sprint cycles and pull-request review pipelines[cite: 1].
+        </li>
+        <li>
+          <strong>Structured Topic-Based Authoring (DITA / XML)[cite: 1]:</strong> High expertise in MadCap Flare[cite: 1, 2], Oxygen XML[cite: 1, 2], and Arbortext Editor[cite: 1, 2]—maximizing modular content reuse and cutting maintenance overhead across complex release cycles[cite: 2].
+        </li>
+        <li>
+          <strong>Audit-Ready Compliance &amp; Zero-Gap Releases[cite: 1, 2, 3]:</strong> Experience delivering audit-compliant system administrator guides[cite: 2] and production release notes[cite: 1, 2] synchronized tightly with Jira and engineering milestones[cite: 2].
+        </li>
+      </ul>
     </div>
 
     <!-- Services -->
