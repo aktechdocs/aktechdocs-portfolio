@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CustomerHub REST API Reference | AKTechDocs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --sidebar-bg: #1e293b;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --code-bg: #090d16;
+      --get: #10b981;
+      --post: #3b82f6;
+      --delete: #ef4444;
+      --patch: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    /* Sidebar */
+    aside {
+      width: 280px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    aside .brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 2rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    aside .brand span { color: var(--accent); }
+    aside nav h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin: 1.25rem 0 0.5rem;
+    }
+    aside nav a {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.35rem 0;
+      transition: color 0.2s;
+    }
+    aside nav a:hover { color: var(--accent); }
+    aside .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Content Area */
+    main {
+      flex: 1;
+      max-width: 950px;
+      padding: 3rem 2.5rem;
+      overflow-y: auto;
+    }
+    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    .lead { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
+    h2 { font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    h3 { font-size: 1.15rem; margin: 1.5rem 0 0.75rem; }
+    p, ul { color: var(--text-muted); margin-bottom: 1rem; }
+    ul { padding-left: 1.2rem; }
+
+    /* Method Badges */
+    .badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      color: #fff;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+    .badge-get { background: var(--get); }
+    .badge-post { background: var(--post); }
+    .badge-delete { background: var(--delete); }
+
+    /* Endpoints & Code Blocks */
+    .endpoint-header {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+    }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+    }
+    code { font-family: 'JetBrains Mono', monospace; color: var(--accent); }
+
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+    }
+    th { background: var(--sidebar-bg); color: var(--text); }
+    td { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <a href="../index.html" class="back-link">&larr; Back to Portfolio</a>
+    <a href="#" class="brand">CustomerHub <span>API</span></a>
+    <nav>
+      <h4>Getting Started</h4>
+      <a href="#overview">Overview</a>
+      <a href="#authentication">Authentication</a>
+      <a href="#errors">Status & Error Codes</a>
+
+      <h4>Customers API</h4>
+      <a href="#list-customers">List Customers</a>
+      <a href="#create-customer">Create Customer</a>
+      <a href="#get-customer">Retrieve Customer</a>
+    </nav>
+  </aside>
+
+  <main>
+    <h1 id="overview">CustomerHub REST API v1 Reference</h1>
+    <p class="lead">
+      The CustomerHub API is organized around REST. All requests use standard HTTP verbs, return JSON-encoded responses, and implement standard HTTP response codes.
+    </p>
+
+    <!-- Base URL -->
+    <h3>Base URL</h3>
+    <pre>https://api.customerhub.io/v1</pre>
+
+    <!-- Authentication -->
+    <h2 id="authentication">Authentication</h2>
+    <p>
+      Authenticate API requests using Bearer tokens sent in the HTTP <code>Authorization</code> request header. All requests must be made over HTTPS.
+    </p>
+    <pre>Authorization: Bearer sec_live_9a4f2c018e7d482</pre>
+
+    <!-- Error Handling -->
+    <h2 id="errors">Status & Error Codes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>200 OK</code></td>
+          <td>Request succeeded.</td>
+        </tr>
+        <tr>
+          <td><code>201 Created</code></td>
+          <td>Resource created successfully.</td>
+        </tr>
+        <tr>
+          <td><code>400 Bad Request</code></td>
+          <td>Missing or malformed payload attributes.</td>
+        </tr>
+        <tr>
+          <td><code>401 Unauthorized</code></td>
+          <td>Missing, expired, or invalid API key.</td>
+        </tr>
+        <tr>
+          <td><code>404 Not Found</code></td>
+          <td>The requested resource ID does not exist.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Endpoints -->
+    <h2>Endpoints</h2>
+
+    <!-- List Customers -->
+    <h3 id="list-customers">1. List All Customers</h3>
+    <p>Retrieves a paginated list of registered enterprise customers.</p>
+
+    <div class="endpoint-header">
+      <span class="badge badge-get">GET</span> /customers
+    </div>
+
+    <h4>Query Parameters</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Type</th>
+          <th>Default</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>limit</code></td>
+          <td>integer</td>
+          <td><code>20</code></td>
+          <td>Number of records returned (max 100).</td>
+        </tr>
+        <tr>
+          <td><code>page</code></td>
+          <td>integer</td>
+          <td><code>1</code></td>
+          <td>Page token for pagination offsets.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>cURL Example</h4>
+    <pre>curl -X GET "https://api.customerhub.io/v1/customers?limit=2" \
+  -H "Authorization: Bearer sec_live_9a4f2c018e7d482" \
+  -H "Accept: application/json"</pre>
+
+    <h4>Response Example (200 OK)</h4>
+    <pre>{
+  "status": "success",
+  "data": [
+    {
+      "id": "cust_8921a",
+      "name": "Acme Industrial Corp",
+      "email": "ops@acmeindustrial.com",
+      "tier": "enterprise",
+      "created_at": "2026-03-15T08:22:11Z"
+    }
+  ],
+  "meta": {
+    "total_records": 1,
+    "page": 1,
+    "limit": 20
+  }
+}</pre>
+
+    <!-- Create Customer -->
+    <h3 id="create-customer">2. Create a Customer</h3>
+    <p>Creates a new organization record inside CustomerHub.</p>
+
+    <div class="endpoint-header">
+      <span class="badge badge-post">POST</span> /customers
+    </div>
+
+    <h4>Request Body Schema</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>Legal or trading entity name.</td>
+        </tr>
+        <tr>
+          <td><code>email</code></td>
+          <td>string</td>
+          <td>Yes</td>
+          <td>Primary technical contact email address.</td>
+        </tr>
+        <tr>
+          <td><code>tier</code></td>
+          <td>string</td>
+          <td>No</td>
+          <td>Account tier: <code>standard</code>, <code>professional</code>, or <code>enterprise</code>. Default is <code>standard</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>cURL Example</h4>
+    <pre>curl -X POST "https://api.customerhub.io/v1/customers" \
+  -H "Authorization: Bearer sec_live_9a4f2c018e7d482" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Global Logistics Ltd",
+    "email": "integrations@globallogistics.com",
+    "tier": "enterprise"
+  }'</pre>
+
+    <h4>Response Example (201 Created)</h4>
+    <pre>{
+  "status": "success",
+  "data": {
+    "id": "cust_9934f",
+    "name": "Global Logistics Ltd",
+    "email": "integrations@globallogistics.com",
+    "tier": "enterprise",
+    "created_at": "2026-11-11T09:30:00Z"
+  }
+}</pre>
+
+    <!-- Get Customer -->
+    <h3 id="get-customer">3. Retrieve Customer by ID</h3>
+    <p>Fetches full object attributes for a specific customer identifier.</p>
+
+    <div class="endpoint-header">
+      <span class="badge badge-get">GET</span> /customers/{customer_id}
+    </div>
+
+    <h4>cURL Example</h4>
+    <pre>curl -X GET "https://api.customerhub.io/v1/customers/cust_9934f" \
+  -H "Authorization: Bearer sec_live_9a4f2c018e7d482"</pre>
+
+    <h4>Response Example (200 OK)</h4>
+    <pre>{
+  "status": "success",
+  "data": {
+    "id": "cust_9934f",
+    "name": "Global Logistics Ltd",
+    "email": "integrations@globallogistics.com",
+    "tier": "enterprise",
+    "created_at": "2026-11-11T09:30:00Z"
+  }
+}</pre>
+  </main>
+
+</body>
+</html>
